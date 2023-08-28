@@ -1,3 +1,3 @@
-module main2
+module 3
 
 go 1.20

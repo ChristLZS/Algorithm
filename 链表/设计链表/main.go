@@ -2,7 +2,14 @@ package main
 
 import "fmt"
 
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 type MyLinkedList struct {
+	dummyHead *ListNode
+	size      int
 }
 
 func Constructor() MyLinkedList {
