@@ -2,38 +2,79 @@ package main
 
 import "fmt"
 
-type ListNode struct {
+type Node struct {
 	Val  int
-	Next *ListNode
+	Next *Node
 }
 
 type MyLinkedList struct {
-	dummyHead *ListNode
-	size      int
+	dummyHead *Node
 }
 
 func Constructor() MyLinkedList {
-	return MyLinkedList{}
+	return MyLinkedList{
+		dummyHead: &Node{},
+	}
 }
 
-func (this *MyLinkedList) Get(index int) int {
-	return 0
+func (l *MyLinkedList) Get(index int) int {
+	if index < 0 {
+		return -1
+	}
+
+	cur := l.dummyHead
+	for i := 0; i <= index; i++ {
+		if cur != nil {
+			cur = cur.Next
+		} else {
+			return -1
+		}
+	}
+	if cur != nil {
+		return cur.Val
+	} else {
+		return -1
+	}
 }
 
-func (this *MyLinkedList) AddAtHead(val int) {
-
+func (l *MyLinkedList) AddAtHead(val int) {
+	cur := l.dummyHead
+	node := &Node{Val: val, Next: cur.Next}
+	cur.Next = node
 }
 
-func (this *MyLinkedList) AddAtTail(val int) {
-
+func (l *MyLinkedList) AddAtTail(val int) {
+	cur := l.dummyHead
+	for cur.Next != nil {
+		cur = cur.Next
+	}
+	cur.Next = &Node{Val: val}
 }
 
-func (this *MyLinkedList) AddAtIndex(index int, val int) {
-
+func (l *MyLinkedList) AddAtIndex(index int, val int) {
+	cur := l.dummyHead
+	for i := 0; i < index; i++ {
+		if cur.Next != nil {
+			cur = cur.Next
+		} else {
+			return
+		}
+	}
+	node := &Node{Val: val, Next: cur.Next}
+	cur.Next = node
 }
 
-func (this *MyLinkedList) DeleteAtIndex(index int) {
+func (l *MyLinkedList) DeleteAtIndex(index int) {
+	cur := l.dummyHead
+	for i := 0; i < index; i++ {
+		if cur.Next != nil {
+			cur = cur.Next
+		}
+	}
 
+	if cur.Next != nil {
+		cur.Next = cur.Next.Next
+	}
 }
 
 func main() {
