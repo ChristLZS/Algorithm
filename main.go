@@ -1,16 +1,70 @@
 package main
 
-import "os"
+import (
+	"fmt"
+	"os"
+)
+
+var count int = 46
+
+func Mkdir(dir string) {
+	// 创建目录
+	os.MkdirAll(dir, 0755)
+
+	// 生成go.mod文件
+	f, _ := os.Create(dir + "/go.mod")
+	f.WriteString(fmt.Sprintf("module %d", count))
+	count++
+	f.Close()
+
+	// 生成main.go文件
+	f, _ = os.Create(dir + "/main.go")
+	f.WriteString(fmt.Sprintf("package main\n\nfunc main() {}"))
+	f.Close()
+}
 
 func main() {
-	os.MkdirAll("./双指针/移除元素", os.ModePerm)
-	os.MkdirAll("./双指针/反转字符串", os.ModePerm)
-	os.MkdirAll("./双指针/替换空格", os.ModePerm)
-	os.MkdirAll("./双指针/翻转字符串里的单词", os.ModePerm)
-	os.MkdirAll("./双指针/反转链表", os.ModePerm)
-	os.MkdirAll("./双指针/删除链表的倒数第N个节点", os.ModePerm)
-	os.MkdirAll("./双指针/链表相交", os.ModePerm)
-	os.MkdirAll("./双指针/环形链表II", os.ModePerm)
-	os.MkdirAll("./双指针/三数之和", os.ModePerm)
-	os.MkdirAll("./双指针/四数之和", os.ModePerm)
+	Mkdir("./二叉树/二叉树的递归遍历/前序遍历")
+	Mkdir("./二叉树/二叉树的递归遍历/后序遍历")
+	Mkdir("./二叉树/二叉树的递归遍历/中序遍历")
+	Mkdir("./二叉树/二叉树的迭代遍历/前序遍历")
+	Mkdir("./二叉树/二叉树的迭代遍历/后序遍历")
+	Mkdir("./二叉树/二叉树的迭代遍历/中序遍历")
+	Mkdir("./二叉树/二叉树的统一迭代法/前序遍历")
+	Mkdir("./二叉树/二叉树的统一迭代法/后序遍历")
+	Mkdir("./二叉树/二叉树的统一迭代法/中序遍历")
+	Mkdir("./二叉树/二叉树层序遍历/二叉树的层序遍历")
+	Mkdir("./二叉树/二叉树层序遍历/二叉树的层序遍历II")
+	Mkdir("./二叉树/二叉树层序遍历/二叉树的右视图")
+	Mkdir("./二叉树/二叉树层序遍历/二叉树层平均值")
+	Mkdir("./二叉树/二叉树层序遍历/N叉树的层序遍历")
+	Mkdir("./二叉树/二叉树层序遍历/在每个树行中找最大值")
+	Mkdir("./二叉树/二叉树层序遍历/填充每个节点的下一个右侧节点指针")
+	Mkdir("./二叉树/二叉树层序遍历/填充每个节点的下一个右侧节点指针II")
+	Mkdir("./二叉树/二叉树层序遍历/二叉树的最大深度")
+	Mkdir("./二叉树/二叉树层序遍历/二叉树的最小深度")
+	Mkdir("./二叉树/翻转二叉树")
+	Mkdir("./二叉树/对称二叉树")
+	Mkdir("./二叉树/二叉树的最大深度")
+	Mkdir("./二叉树/二叉树的最小深度")
+	Mkdir("./二叉树/完全二叉树的节点个数")
+	Mkdir("./二叉树/平衡二叉树")
+	Mkdir("./二叉树/二叉树的所有路径")
+	Mkdir("./二叉树/左叶子之和")
+	Mkdir("./二叉树/找树左下角的值")
+	Mkdir("./二叉树/路径总和")
+	Mkdir("./二叉树/从中序与后序遍历序列构造二叉树")
+	Mkdir("./二叉树/最大二叉树")
+	Mkdir("./二叉树/合并二叉树")
+	Mkdir("./二叉树/二叉搜索树中的搜索")
+	Mkdir("./二叉树/验证二叉搜索树")
+	Mkdir("./二叉树/二叉搜索树的最小绝对差")
+	Mkdir("./二叉树/二叉搜索树中的众数")
+	Mkdir("./二叉树/二叉树的最近公共祖先")
+	Mkdir("./二叉树/二叉搜索树的最近公共祖先")
+	Mkdir("./二叉树/二叉搜索树中的插入操作")
+	Mkdir("./二叉树/删除二叉搜索树中的节点")
+	Mkdir("./二叉树/修剪二叉搜索树")
+	Mkdir("./二叉树/将有序数组转换为二叉搜索树")
+	Mkdir("./二叉树/把二叉搜索树转换为累加树")
 }
