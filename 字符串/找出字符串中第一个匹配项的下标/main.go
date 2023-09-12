@@ -8,10 +8,9 @@ import "fmt"
 //	next 前缀表数组
 //	s 模式串
 func getNext(s string) []int {
-	next := make([]int, len(s))
-
 	j := -1 // j表示 最长相等前后缀长度
-	next[0] = j
+	next := make([]int, len(s))
+	next[0] = -1
 
 	for i := 1; i < len(s); i++ {
 		for j >= 0 && s[i] != s[j+1] {
