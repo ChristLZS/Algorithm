@@ -1,28 +1,55 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
+// 单队列实现栈
 type MyStack struct {
+	queue []int
 }
 
 func Constructor() MyStack {
-	return MyStack{}
+	return MyStack{queue: []int{}}
 }
 
 func (this *MyStack) Push(x int) {
-
+	this.queue = append(this.queue, x)
 }
 
 func (this *MyStack) Pop() int {
-	return 0
+	if len(this.queue) == 0 {
+		return -1
+	}
+
+	length := len(this.queue)
+	for i := 0; i < length-1; i++ { // 将队列前面的元素依次出队再入队，直到队列中只剩下一个元素,这个元素就是栈顶元素
+		this.queue = append(this.queue, this.queue[0])
+		this.queue = this.queue[1:]
+	}
+	data := this.queue[0]
+	this.queue = this.queue[1:]
+	return data
 }
 
 func (this *MyStack) Top() int {
-	return 0
+	if len(this.queue) == 0 {
+		return -1
+	}
+
+	length := len(this.queue)
+	for i := 0; i < length-1; i++ { // 将队列前面的元素依次出队再入队，直到队列中只剩下一个元素,这个元素就是栈顶元素
+		this.queue = append(this.queue, this.queue[0])
+		this.queue = this.queue[1:]
+	}
+	data := this.queue[0]
+	this.queue = append(this.queue, this.queue[0]) // 将栈顶元素再次入队
+
+	return data
 }
 
 func (this *MyStack) Empty() bool {
-	return false
+	return len(this.queue) == 0
 }
 
 /**
