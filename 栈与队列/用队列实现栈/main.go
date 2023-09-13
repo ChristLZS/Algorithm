@@ -3,37 +3,55 @@ package main
 import "fmt"
 
 type MyQueue struct {
-	data []int
+	stackIn  []int
+	stackOut []int
 }
 
 func Constructor() MyQueue {
-	return MyQueue{data: make([]int, 0)}
+	return MyQueue{stackIn: []int{}, stackOut: []int{}}
 }
 
 func (this *MyQueue) Push(x int) {
-	this.data = append(this.data, x)
+	this.stackIn = append(this.stackIn, x)
 }
 
 func (this *MyQueue) Pop() int {
-	if len(this.data) == 0 {
-		return -1
-	} else {
-		data := this.data[0]
-		this.data = this.data[1:]
-		return data
+	if len(this.stackOut) == 0 { // stackOut为空，将stackIn中的元素全部转移到stackOut中
+		for len(this.stackIn) > 0 {
+			this.stackOut = append(this.stackOut, this.stackIn[len(this.stackIn)-1])
+			this.stackIn = this.stackIn[:len(this.stackIn)-1]
+		}
 	}
+
+	if len(this.stackOut) == 0 { // stackOut为空，返回-1
+		return -1
+	}
+
+	// stackOut不为空，返回stackOut的最后一个元素
+	res := this.stackOut[len(this.stackOut)-1]
+	this.stackOut = this.stackOut[:len(this.stackOut)-1]
+
+	return res
 }
 
 func (this *MyQueue) Peek() int {
-	if len(this.data) == 0 {
+	if len(this.stackOut) == 0 { // stackOut为空，将stackIn中的元素全部转移到stackOut中
+		for len(this.stackIn) > 0 {
+			this.stackOut = append(this.stackOut, this.stackIn[len(this.stackIn)-1])
+			this.stackIn = this.stackIn[:len(this.stackIn)-1]
+		}
+	}
+
+	if len(this.stackOut) == 0 { // stackOut为空，返回-1
 		return -1
 	}
 
-	return this.data[0]
+	// stackOut不为空，返回stackOut的最后一个元素
+	return this.stackOut[len(this.stackOut)-1]
 }
 
 func (this *MyQueue) Empty() bool {
-	return len(this.data) == 0
+	return len(this.stackIn) == 0 && len(this.stackOut) == 0
 }
 
 /**
