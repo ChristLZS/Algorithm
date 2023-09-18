@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// 单调队列,从大到小
 type MyQueue struct {
 	queue []int
 }
@@ -32,6 +33,7 @@ func (m *MyQueue) Push(val int) {
 }
 
 func (m *MyQueue) Pop(val int) {
+	// 如果要删除的元素是队头最大的元素,则删除
 	if !m.Empty() && val == m.Front() {
 		m.queue = m.queue[1:]
 	}
