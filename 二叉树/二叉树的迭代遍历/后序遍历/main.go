@@ -41,6 +41,7 @@ func postorderTraversal(root *TreeNode) []int {
 	return res
 }
 
+// 反转
 func reverse(nums []int) {
 	for i, j := 0, len(nums)-1; i < j; i, j = i+1, j-1 {
 		nums[j], nums[i] = nums[i], nums[j]
