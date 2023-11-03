@@ -38,5 +38,4 @@ func preorderTraversal(root *TreeNode) []int {
 
 func main() {
 	fmt.Println(preorderTraversal(&TreeNode{Val: 1, Right: &TreeNode{Val: 2, Left: &TreeNode{Val: 3}}}))
-
 }
