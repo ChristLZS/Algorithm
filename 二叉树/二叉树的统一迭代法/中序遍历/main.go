@@ -44,5 +44,5 @@ func inorderTraversal(root *TreeNode) []int {
 }
 
 func main() {
-	fmt.Println(preorderTraversal(&TreeNode{Val: 1, Right: &TreeNode{Val: 2, Left: &TreeNode{Val: 3}}}))
+	fmt.Println(inorderTraversal(&TreeNode{Val: 1, Right: &TreeNode{Val: 2, Left: &TreeNode{Val: 3}}}))
 }
