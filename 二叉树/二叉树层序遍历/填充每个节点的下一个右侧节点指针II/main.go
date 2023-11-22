@@ -20,6 +20,8 @@ func connect(root *Node) *Node {
 		for index, v := range queue {
 			if index+1 < len(queue) {
 				v.Next = queue[index+1]
+			} else {
+				v.Next = nil
 			}
 
 			if v.Left != nil {
