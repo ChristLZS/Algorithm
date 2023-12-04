@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -31,5 +33,6 @@ func countNodes(root *TreeNode) int {
 }
 
 func main() {
+	fmt.Println(countNodes(nil))
 
 }
