@@ -17,14 +17,18 @@ func insertIntoBST(root *TreeNode, val int) *TreeNode {
 	vist = func(node *TreeNode) {
 		if val > node.Val {
 			if node.Right == nil {
+				// 插入右子树
 				node.Right = &TreeNode{Val: val}
 			} else {
+				// 遍历右子树
 				vist(node.Right)
 			}
 		} else {
 			if node.Left == nil {
+				// 插入左子树
 				node.Left = &TreeNode{Val: val}
 			} else {
+				// 遍历左子树s
 				vist(node.Left)
 			}
 		}
